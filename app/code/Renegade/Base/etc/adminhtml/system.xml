@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="renegade" translate="label" sortOrder="1000">
+            <label>Renegade</label>
+        </tab>
+        <section id="renegade_base" translate="label" type="text" sortOrder="1" showInDefault="1">
+            <label>Base Configuration</label>
+            <tab>renegade</tab>
+            <resource>Renegade_Base::config</resource>
+            <group id="log_configuration" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Log Configuration</label>
+                <field id="recipient_email_address" translate="label" type="text" sortOrder="10" showInDefault="1">
+                    <label>Log Recipient Email Address</label>
+                    <validate>validate-email</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

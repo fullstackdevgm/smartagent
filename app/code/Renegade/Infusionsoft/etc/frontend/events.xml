@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch_customer_account_loginPost">
+        <observer name="renegade_infusionsoft_customer_login" instance="Renegade\Infusionsoft\Observer\CustomerLoginObserver"/>
+    </event>
+    <event name="controller_action_predispatch_customer_ajax_login">
+        <observer name="renegade_infusionsoft_customer_login" instance="Renegade\Infusionsoft\Observer\CustomerLoginObserver"/>
+    </event>
+</config>

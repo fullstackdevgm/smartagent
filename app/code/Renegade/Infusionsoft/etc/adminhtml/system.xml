@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="renegade_infusionsoft" translate="label" type="text" sortOrder="20" showInDefault="1">
+            <label>Infusionsoft Integration</label>
+            <tab>renegade</tab>
+            <resource>Renegade_Infusionsoft::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="config" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Configuration</label>
+                <field id="login_link" translate="label" type="label" sortOrder="10" showInDefault="1">
+                    <label>Authorization</label>
+                    <frontend_model>Renegade\Infusionsoft\Block\Adminhtml\System\Config\Authorization</frontend_model>
+                    <depends>
+                        <field id="*/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="token_expiration" translate="label" type="label" sortOrder="10" showInDefault="1">
+                    <label>Token Expiration</label>
+                    <frontend_model>Renegade\Infusionsoft\Block\Adminhtml\System\Config\TokenExpiration</frontend_model>
+                    <depends>
+                        <field id="*/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="client_id" translate="label" type="text" sortOrder="20" showInDefault="1">
+                    <label>Client ID</label>
+                    <depends>
+                        <field id="*/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="client_secret" translate="label" type="obscure" sortOrder="25" showInDefault="1">
+                    <label>Client Secret</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="*/general/enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

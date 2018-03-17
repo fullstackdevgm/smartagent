@@ -1,0 +1,36 @@
+<!--The 'step_code' value from the .js file should be used-->
+<li id="agentdetails" data-bind="fadeVisible: isVisible">
+<div class="step-title" data-bind="i18n: 'Agent Details'" data-role="title"></div>
+    <div id="checkout-step-agentdetails"
+         class="step-content"
+         data-role="content">
+
+         <fieldset class="fieldset agent-fields">
+            <!-- ko foreach: getRegion('agentdetails-fields') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+         </fieldset>
+         <form id="brokeragedetails" class="form" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+            <fieldset class="fieldset">
+                <legend data-bind="i18n: 'Brokerage Details'"></legend>
+                <!-- ko foreach: getRegion('brokeragedetails-fields') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </fieldset>
+        </form>
+        <fieldset class="fieldset others-fields">
+            <!-- ko foreach: getRegion('others-fields') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </fieldset>
+        <form data-bind="submit: navigateToNextStep" novalidate="novalidate">
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button data-role="opc-continue" type="submit" class="button action continue primary">
+                        <span><!-- ko i18n: 'Next'--><!-- /ko --></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</li>

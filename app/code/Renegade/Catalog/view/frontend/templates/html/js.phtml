@@ -1,0 +1,22 @@
+<?php
+//Renegade custom javascript
+?>
+<script type="application/javascript">// <![CDATA[
+    require(['jquery'], function (jQuery) {
+        jQuery(document).ready(function () {
+            setTimeout(function () {
+                var bookTitleSelect        = jQuery('.swatch-attribute[attribute-code$="book_title"] select'),
+                    bookCoverSelectWrapper = jQuery('.swatch-attribute[attribute-code$="book_cover"]');
+
+                bookTitleSelect.change(function () {
+                    if ('0' !== bookTitleSelect.val()) {
+                        bookCoverSelectWrapper.slideDown();
+                    } else {
+                        bookCoverSelectWrapper.slideUp();
+                    }
+                });
+            }, 1000);
+        });
+    });
+    // ]]>
+</script>

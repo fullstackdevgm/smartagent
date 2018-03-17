@@ -1,0 +1,59 @@
+.fieldset > .field:not(.choice) > label.label {
+    min-width: 74.2%;
+    text-align: left;
+    font-weight: bold;
+}
+.admin__field._required > legend {
+    font-weight: bold;
+}
+.admin__field._required > legend:after {
+    top: 9px;
+    content: "*";
+    color: #e02b27;
+    font-size: 1.2rem;
+    margin: 0 0 0 5px;
+    margin-left: 10px;
+}
+.admin__field._required > label {
+    font-weight: bold;
+}
+.admin__field._required > label:after {
+    top: 9px;
+    content: "*";
+    color: #e02b27;
+    font-size: 1.2rem;
+    margin: 0 0 0 5px;
+    margin-left: 10px;
+}
+fieldset.admin__field {
+    border: none;
+    padding: 0;
+    margin: 0 0 29px;
+    width: 74.2%;
+}
+.admin__field.admin__field-option {
+    display: inline-block;
+    margin-left: 10px;
+}
+.admin__field-note, .field-note {
+    border-left: 3px solid #e4e4e4;
+    padding-left: 10px;
+    margin-top: 5px;
+    font-style: italic;
+}
+#brokeragedetails {
+    width: 74.2%;
+    border: 1px solid #e4e4e4;
+    padding: 20px;
+}
+#brokeragedetails > fieldset > legend {
+    padding: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+#brokeragedetails .fieldset > .field:not(.choice) > .label {
+    width: 100%;
+}
+#brokeragedetails .fieldset > .field:not(.choice) > .control {
+    width: 100%;
+}

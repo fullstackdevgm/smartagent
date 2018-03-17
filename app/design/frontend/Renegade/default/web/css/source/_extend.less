@@ -1,0 +1,76 @@
+.swatch-option {
+  &.disabled {
+    display : none;
+  }
+}
+
+@icons__font-name : 'FontAwesome';
+@icon-font__size : 14px;
+@icon-font__line-height : inherit;
+@icon-cart : '\f02d';
+
+.minicart-wrapper {
+  .action {
+    &.showcart {
+      &:before {
+        font-size : 24px;
+      }
+
+      &.active {
+        &:before {
+          font-size : 24px;
+        }
+      }
+    }
+  }
+}
+
+.block-minicart {
+  .subtotal {
+    display : none;
+  }
+}
+
+div.checkout-shipping-method .step-title,
+#onepage-checkout-shipping-method-additional-load,
+#checkout-shipping-method-load {
+  display : none;
+}
+
+.opc-sidebar {
+  display : block;
+
+  .opc-summary-wrapper {
+    width : 100%;
+  }
+}
+
+.swatch-attribute-options {
+  option.disabled {
+    display : none;
+  }
+}
+
+.swatch-attribute[attribute-code$="book_cover"] {
+  display : none;
+}
+
+.opc-block-shipping-information {
+  .ship-via {
+    display : none;
+  }
+}
+
+.opc-wrapper {
+  width   : 100%;
+  margin  : 0;
+  padding : 0;
+}
+
+.opc-sidebar {
+  width : 100%;
+}
+
+@checkout-sidebar__margin__xl : 0;
+@checkout-sidebar__margin : 0;
+@checkout-sidebar__columns : 1;

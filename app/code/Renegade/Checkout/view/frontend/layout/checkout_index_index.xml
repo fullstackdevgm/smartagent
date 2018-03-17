@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Renegade_Checkout/css/Renegade_styles.css"/>
+    </head>
+    <body>
+        <referenceBlock name="checkout.root">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="checkout" xsi:type="array">
+                                <item name="children" xsi:type="array">
+                                    <item name="steps" xsi:type="array">
+                                        <item name="children" xsi:type="array">
+                                            <!-- The new step you add -->
+                                            <item name="agentdetails-step" xsi:type="array">
+                                                <item name="component" xsi:type="string">uiComponent</item>
+                                                    <!--To display step content before shipping step "sortOrder" value should be < 1-->
+                                                    <!--To display step content between shipping step and payment step  1 < "sortOrder" < 2 -->
+                                                    <!--To display step content after payment step "sortOrder" > 2 -->
+                                                <item name="sortOrder" xsi:type="string">0</item>
+                                                <item name="children" xsi:type="array">
+                                                    <!--add here child component declaration for your step-->
+                                                    <item name="brokeragedetails" xsi:type="array">
+                                                        <item name="component" xsi:type="string">Renegade_Checkout/js/view/agentdetails</item>
+                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                        <item name="config" xsi:type="array">
+                                                            <item name="template" xsi:type="string">Renegade_Checkout/agentdetails</item>
+                                                        </item>
+                                                        <item name="children" xsi:type="array">
+                                                            <item name="agentdetails-fieldset" xsi:type="array">
+                                                                <!-- uiComponent is used as a wrapper for form fields (its template will render all children as a list) -->
+                                                                <item name="component" xsi:type="string">uiComponent</item>
+                                                                <!-- the following display area is used in template (see below) -->
+                                                                <item name="displayArea" xsi:type="string">agentdetails-fields</item>
+                                                                <item name="children" xsi:type="array">
+                                                                    <item name="notification_phone_number" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                                            <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                                            <item name="notice" xsi:type="string" translate="true">Which phone number do you want leads to be able to reach you on?</item>
+                                                                            <item name="notice" xsi:type="string" translate="true">Which phone number do you want you on?</item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.notification_phone_number</item>
+                                                                        <item name="label" xsi:type="string">Phone Number for Notifications</item>
+                                                                        <item name="sortOrder" xsi:type="string">1</item>
+                                                                        <item name="validation" xsi:type="array">
+                                                                            <item name="required-entry" xsi:type="string">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                    <item name="call_capture_area_code" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/post-code</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                                            <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.call_capture_area_code</item>
+                                                                        <item name="label" xsi:type="string">Desired Area Code for Call Capture Number</item>
+                                                                        <item name="sortOrder" xsi:type="string">2</item>
+                                                                        <item name="validation" xsi:type="array">
+                                                                            <item name="required-entry" xsi:type="string">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                    <item name="market_area" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                                            <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.market_area</item>
+                                                                        <item name="label" xsi:type="string">Your Market Area</item>
+                                                                        <item name="sortOrder" xsi:type="string">3</item>
+                                                                        <item name="validation" xsi:type="array">
+                                                                            <item name="required-entry" xsi:type="string">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                    <item name="brokerage_name" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                                            <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.brokerage_name</item>
+                                                                        <item name="label" xsi:type="string">Brokerage Name</item>
+                                                                        <item name="sortOrder" xsi:type="string">4</item>
+                                                                        <item name="validation" xsi:type="array">
+                                                                            <item name="required-entry" xsi:type="string">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                    <item name="featured_as_author" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/checkbox-set</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <item name="template" xsi:type="string">ui/form/element/checkbox-set</item>
+                                                                            <item name="multiple" xsi:type="boolean">false</item>
+                                                                            <item name="elementTmpl" xsi:type="string"/>
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="notice" xsi:type="string" translate="true">To say you are the author of the books is not to imply that you have written the books. It is to only let people know you have a part in the books. You have hired our team to write and setup each book for you.</item>
+                                                                        </item>
+                                                                        <item name="options" xsi:type="array">
+                                                                            <item name="0" xsi:type="array">
+                                                                                <item name="label" xsi:type="string">Yes</item>
+                                                                                <item name="value" xsi:type="string">true</item>
+                                                                            </item>
+                                                                            <item name="1" xsi:type="array">
+                                                                                <item name="label" xsi:type="string">No</item>
+                                                                                <item name="value" xsi:type="string">false</item>
+                                                                            </item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.featured_as_author</item>
+                                                                        <item name="label" xsi:type="string">Would you like to be featured as an Author?</item>
+                                                                        <item name="sortOrder" xsi:type="string">5</item>
+                                                                        <item name="validation" xsi:type="array">
+                                                                            <item name="required-entry" xsi:type="string">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                    <item name="brokerage_info_required" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/checkbox-set</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <item name="template" xsi:type="string">ui/form/element/checkbox-set</item>
+                                                                            <item name="multiple" xsi:type="boolean">false</item>
+                                                                            <item name="elementTmpl" xsi:type="string"/>
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                        </item>
+                                                                        <item name="options" xsi:type="array">
+                                                                            <item name="0" xsi:type="array">
+                                                                                <item name="label" xsi:type="string">Yes</item>
+                                                                                <item name="value" xsi:type="string">true</item>
+                                                                            </item>
+                                                                            <item name="1" xsi:type="array">
+                                                                                <item name="label" xsi:type="string">No</item>
+                                                                                <item name="value" xsi:type="string">false</item>
+                                                                            </item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.brokerage_info_required</item>
+                                                                        <item name="label" xsi:type="string">Are you required to have your brokerage information displayed on your books?</item>
+                                                                        <item name="sortOrder" xsi:type="string">6</item>
+                                                                        <item name="validation" xsi:type="array">
+                                                                            <item name="required-entry" xsi:type="string">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                            <item name="brokeragedetails-fieldset" xsi:type="array">
+                                                                <!-- uiComponent is used as a wrapper for form fields (its template will render all children as a list) -->
+                                                                <item name="component" xsi:type="string">uiComponent</item>
+                                                                <!-- the following display area is used in template (see below) -->
+                                                                <item name="displayArea" xsi:type="string">brokeragedetails-fields</item>
+                                                                <item name="children" xsi:type="array">
+                                                                    <item name="brokerage_phone_number" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                                            <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.brokerage_phone_number</item>
+                                                                        <item name="label" xsi:type="string">Brokerage Phone Number</item>
+                                                                        <item name="sortOrder" xsi:type="string">1</item>
+                                                                        <item name="validation" xsi:type="array">
+                                                                            <item name="required-entry" xsi:type="string">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                    <item name="country_id" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/select</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                                            <item name="elementTmpl" xsi:type="string">ui/form/element/select</item>
+                                                                        </item>
+                                                                        <item name="options" xsi:type="array">
+                                                                            <item name="0" xsi:type="array">
+                                                                                <item name="label" xsi:type="string"></item>
+                                                                                <item name="value" xsi:type="string"></item>
+                                                                            </item>
+                                                                            <item name="1" xsi:type="array">
+                                                                                <item name="label" xsi:type="string">Canada</item>
+                                                                                <item name="value" xsi:type="string">CA</item>
+                                                                            </item>
+                                                                            <item name="2" xsi:type="array">
+                                                                                <item name="label" xsi:type="string">United States</item>
+                                                                                <item name="value" xsi:type="string">US</item>
+                                                                            </item>
+                                                                        </item>
+                                                                        <item name="value" xsi:type="string">US</item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.country_id</item>
+                                                                        <item name="label" xsi:type="string">Country</item>
+                                                                        <item name="sortOrder" xsi:type="string">2</item>
+                                                                        <item name="validation" xsi:type="array">
+                                                                            <item name="required-entry" xsi:type="string">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                    <item name="brokerage_address_1" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                                            <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.brokerage_address_1</item>
+                                                                        <item name="label" xsi:type="string">Address Line 1</item>
+                                                                        <item name="sortOrder" xsi:type="string">3</item>
+                                                                        <item name="validation" xsi:type="array">
+                                                                            <item name="required-entry" xsi:type="string">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                    <item name="brokerage_address_2" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                                            <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.brokerage_address_2</item>
+                                                                        <item name="label" xsi:type="string">Address Line 2</item>
+                                                                        <item name="sortOrder" xsi:type="string">4</item>
+                                                                    </item>
+                                                                    <item name="brokerage_city" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                                            <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.brokerage_city</item>
+                                                                        <item name="label" xsi:type="string">City</item>
+                                                                        <item name="sortOrder" xsi:type="string">5</item>
+                                                                        <item name="validation" xsi:type="array">
+                                                                            <item name="required-entry" xsi:type="string">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                    <!--<item name="region_id" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/region</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                                            <item name="elementTmpl" xsi:type="string">ui/form/element/select</item>
+                                                                            <item name="customEntry" xsi:type="string">brokeragedetails.region</item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.region_id</item>
+                                                                        <item name="label" xsi:type="string">State or Province</item>
+                                                                        <item name="sortOrder" xsi:type="string">6</item>
+                                                                        <item name="validation" xsi:type="array">
+                                                                            <item name="required-entry" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                        <item name="filterBy" xsi:type="array">
+                                                                            <item name="target" xsi:type="string"><![CDATA[${ $.provider }:${ $.parentScope }.country_id]]></item>
+                                                                            <item name="field" xsi:type="string">country_id</item>
+                                                                        </item>
+                                                                    </item>-->
+                                                                    <item name="brokerage_postal_code" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/post-code</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                                            <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.brokerage_postal_code</item>
+                                                                        <item name="label" xsi:type="string">Postal Code</item>
+                                                                        <item name="sortOrder" xsi:type="string">7</item>
+                                                                        <item name="validation" xsi:type="array">
+                                                                            <item name="required-entry" xsi:type="string">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                    <item name="brokerage_instructions" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/textarea</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.brokerage_instructions</item>
+                                                                        <item name="label" xsi:type="string">Do you have any specific instructions that we/you need to follow?</item>
+                                                                        <item name="sortOrder" xsi:type="string">8</item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                            <item name="others-fieldset" xsi:type="array">
+                                                                <!-- uiComponent is used as a wrapper for form fields (its template will render all children as a list) -->
+                                                                <item name="component" xsi:type="string">uiComponent</item>
+                                                                <!-- the following display area is used in template (see below) -->
+                                                                <item name="displayArea" xsi:type="string">others-fields</item>
+                                                                <item name="children" xsi:type="array">
+                                                                    <item name="agent_photo" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/file-uploader</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="template" xsi:type="string">ui/form/element/uploader/uploader</item>
+                                                                            <item name="notice" xsi:type="string" translate="true">Minimum size: 1200 x 1800 pixels. For the best results, a photo that is waist up is recommended.</item>
+                                                                        </item>
+                                                                        <item name="uploaderConfig" xsi:type="array">
+                                                                            <item name="url" xsi:type="url" path="path/to/controller"/>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.agent_photo</item>
+                                                                        <item name="label" xsi:type="string">Your Photo/Head Shot</item>
+                                                                        <item name="sortOrder" xsi:type="string">1</item>
+                                                                        <item name="validation" xsi:type="array">
+                                                                            <item name="required-entry" xsi:type="string">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                    <item name="agent_logo" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/file-uploader</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="template" xsi:type="string">ui/form/element/uploader/uploader</item>
+                                                                            <item name="notice" xsi:type="string" translate="true">If your logo is not available to upload at this time, you can always email it into our team at a later time. PNG is the suggested file type for all logos.</item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.agent_logo</item>
+                                                                        <item name="label" xsi:type="string">Your Logo (if you have one)</item>
+                                                                        <item name="sortOrder" xsi:type="string">2</item>
+                                                                    </item>
+                                                                    <item name="agent_bio" xsi:type="array">
+                                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/file-uploader</item>
+                                                                        <item name="config" xsi:type="array">
+                                                                            <!-- customScope is used to group elements within a single form (e.g. they can be validated separately) -->
+                                                                            <item name="customScope" xsi:type="string">brokeragedetails</item>
+                                                                            <item name="template" xsi:type="string">ui/form/element/uploader/uploader</item>
+                                                                            <item name="notice" xsi:type="string" translate="true">If your logo is not available to upload at this time, you can always email it into our team at a later time. PNG is the suggested file type for all logos.</item>
+                                                                        </item>
+                                                                        <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                        <item name="dataScope" xsi:type="string">brokeragedetails.agent_bio</item>
+                                                                        <item name="label" xsi:type="string">Would you like to add a Bio to your sites?</item>
+                                                                        <item name="sortOrder" xsi:type="string">3</item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+        </referenceBlock>
+    </body>
+</page>

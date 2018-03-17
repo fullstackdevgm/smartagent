@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Renegade\Base\Logger\Handler\NativeMailerHandler" type="Monolog\Handler\NativeMailerHandler">
+        <arguments>
+            <argument name="subject" xsi:type="string">Store Error</argument>
+            <argument name="to" xsi:type="array">
+                <item name="developer1" xsi:type="string">andrew@smartagents.com</item>
+            </argument>
+            <argument name="from" xsi:type="string">no-reply@smartagents.com</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Renegade\Base\Logger\ErrorLogger" type="Monolog\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">renegade</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="critical" xsi:type="object">Renegade\Base\Logger\Handler\NativeMailerHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Renegade\Checkout\Observer\SalesOrderPlaceAfterObserver">
+        <arguments>
+            <argument name="logger" xsi:type="object">Renegade\Base\Logger\ErrorLogger</argument>
+        </arguments>
+    </type>
+</config>
